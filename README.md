@@ -1,37 +1,59 @@
 <div align="center">
 
-# Lenovo Legion Go AMD 26.9.2 Toolkit
+# Lenovo Legion Go AMD Graphics Driver Toolkit
 
-### Public Beta v5.0 — AMD 26.9.2 for three exact supported Legion Go profiles
+### AMD Adrenalin 26.10.2 — Public Beta v6.0 candidate (Go 1 Z1 Extreme)
 
-![Release](https://img.shields.io/badge/release-Public%20Beta%20v5.0-2EA44F?style=for-the-badge)
-![Target](https://img.shields.io/badge/current%20target-AMD%2026.9.2-ED1C24?style=for-the-badge)
-![Profiles](https://img.shields.io/badge/supported%20profiles-3-111111?style=for-the-badge)
+![Candidate](https://img.shields.io/badge/candidate-Public%20Beta%20v6.0-orange?style=for-the-badge)
+![AMD](https://img.shields.io/badge/AMD-26.10.2-ED1C24?style=for-the-badge)
+![Audit](https://img.shields.io/badge/Go%201%20audit-78%2F78-2EA44F?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/platform-Windows%2011-0078D4?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
 
-**Build, install, and verify AMD 26.9.2 while preserving the OEM integration required by each supported Legion Go profile.**
+**Build, install and verify AMD graphics drivers for exact supported Legion Go hardware.**
 
-[Latest release](../../releases/tag/public-beta-v5.0) · [Installation](docs/INSTALLATION.md) · [Compatibility](docs/COMPATIBILITY.md) · [Verification](docs/VERIFICATION.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
+[26.10.2 installation and validation](docs/AMD-26.10.2-GO1.md) · [Available releases](../../releases) · [26.9.2 installation](docs/INSTALLATION.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
 
 </div>
 
 ---
 
 > [!IMPORTANT]
-> **Current release: Public Beta v5.0.** It targets AMD Adrenalin 26.9.2 / display driver `32.0.32015.2008` and retains the exact three-profile hardware scope established by v4.5.
->
-> Public Beta v5.0 includes conditional public entry-gate handling for optional `-OfficialInfPath` / `-OfficialDatPath` arguments: they are forwarded only when non-empty, so normal launches use the standard static package preflight path.
+> **New: AMD Adrenalin 26.10.2 for the original Legion Go 1 Z1 Extreme.** Beta r3 completed a physical installation; the subsequent RC1 persistence audit passed all 78 checks with zero failures and warnings. The v6.0 candidate release assets are pending publication. AMD 26.9.2 Public Beta v5.0 remains available.
+
+## Choose your driver
+
+| Device | AMD 26.10.2 candidate | AMD 26.9.2 Public Beta v5.0 |
+|---|---|---|
+| Legion Go 1 Z1 Extreme | [Installation and validation](docs/AMD-26.10.2-GO1.md) — assets pending | [Download](../../releases/tag/public-beta-v5.0) |
+| Legion Go S Z1 Extreme | Not supported | [Download](../../releases/tag/public-beta-v5.0) |
+| Legion Go 2 Z2 Extreme | Not supported | [Download](../../releases/tag/public-beta-v5.0) |
+
+Exact hardware IDs are required for both versions; unsupported devices must not use the 26.10.2 candidate.
+
+## AMD 26.10.2 validation highlights
+
+| Check | Result |
+|---|---|
+| Display driver | `32.0.32015.12012` |
+| GPU | AMD Radeon(TM) 780M |
+| Final persistence audit | **78/78 PASS** |
+| Failures / warnings | 0 / 0 |
+| GPU problem code | 0 |
+| Test Signing / nointegritychecks | OFF / OFF |
+| Local and original catalog coverage | 14/14 each |
+| Secure Boot | Disabled |
+
+The candidate uses the original v5.0 managed workflow, automatic extraction and local driver construction, reboot/resume, and AMD Software installation. No mandatory Lenovo recovery driver download is required. RC1 includes session-wide QuickEdit protection. A fresh RC1 installation, rollback and broader gaming, sleep and performance testing remain unverified.
+
+[Read the 26.10.2 installation instructions, checksums and limitations](docs/AMD-26.10.2-GO1.md).
 
 > [!WARNING]
-> This toolkit changes the display-driver package, Driver Store, certificate trust, AMD Software, scheduled tasks, and temporary Windows Test Signing configuration. Back up important data and **preserve your BitLocker or Device Encryption recovery key before disabling Secure Boot or starting the workflow**.
+> This toolkit modifies display drivers, certificate trust, AMD Software, scheduled tasks and temporary Windows Test Signing configuration. Save your work, keep an independent Windows recovery option available and preserve your BitLocker or Device Encryption recovery key before changing Secure Boot. Secure Boot remains disabled and a local public signing certificate remains trusted after the 26.10.2 workflow.
 
-Apologies for my mistake, 5.0 has the correct files that was reuploaded, enjoy!
+---
 
-> [!NOTE]
-> **AMD 26.10.2 — original Legion Go 1 candidate:** A separate Go 1 Z1 Extreme build has completed a physical installation and a 78/78 follow-up audit. See [candidate status, requirements and checksums](docs/AMD-26.10.2-GO1.md). GitHub release assets are pending; the current 26.9.2 Public Beta v5.0 remains unchanged.
-
-## Exact supported hardware
+## AMD 26.9.2 — exact supported hardware (Public Beta v5.0)
 
 Public Beta v5.0 supports only these exact hardware IDs:
 
@@ -93,7 +115,7 @@ The v4 origin/rollback architecture was physically field-validated from a real A
 
 ROG Ally-origin migration is field-proven on Go 1. The same profile-aware contract is present for Go S and Go 2, but Ally-origin transitions have not been separately field-run on those two devices.
 
-## Download and verify
+## Download and verify AMD 26.9.2
 
 Release asset:
 
@@ -112,7 +134,7 @@ SHA-256: 72E368AE264F36E89CA0FE1DAB1CAD926047C2D6B0A3EFED9745D8D99780FE58
 
 Download AMD's installer from AMD Support, then use the fail-closed verify/unblock/extract/run block in [Installation](docs/INSTALLATION.md).
 
-## Validation highlights
+## AMD 26.9.2 validation highlights
 
 - **Go 1:** physical AMD 26.9.2 validation completed on the v5.0 line, followed by a full one-command/resume/idempotent end-to-end run. Final audit: **78/78 PASS**, `FailedChecks=0`, `Warnings=0`, Test Signing OFF, `nointegritychecks` OFF, local + official critical catalog coverage **14/14 + 14/14**.
 - **Go S / Go 2:** deterministic AMD 26.9.2 source/build contracts are frozen and source-rebuild validation is recorded. Device-specific physical profile evidence is inherited from the v4.5.1 lineage; **no new physical 26.9.2 run is claimed for those two devices**.
@@ -124,6 +146,7 @@ Private volunteer packages and private evidence archives are not public release 
 
 ## Release history
 
+- [AMD 26.10.2 Go 1 — Public Beta v6.0 candidate](docs/AMD-26.10.2-GO1.md) — hardware-validated; release assets pending
 - [Public Beta v5.0](releases/public-beta-v5.0/) — current AMD 26.9.2 release; three exact supported profiles
 - [Public Beta v4.5.1](releases/public-beta-v4.5.1/) — AMD 26.8.1 compatibility/recovery hotfix
 - [Public Beta v4.5](releases/public-beta-v4.5/) — AMD 26.8.1 multi-device release
