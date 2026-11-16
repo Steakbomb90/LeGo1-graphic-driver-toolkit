@@ -28,6 +28,9 @@
 
 Apologies for my mistake, 5.0 has the correct files that was reuploaded, enjoy!
 
+> [!NOTE]
+> **AMD 26.10.2 — original Legion Go 1 candidate:** A separate Go 1 Z1 Extreme build has completed a physical installation and a 78/78 follow-up audit. See [candidate status, requirements and checksums](docs/AMD-26.10.2-GO1.md). GitHub release assets are pending; the current 26.9.2 Public Beta v5.0 remains unchanged.
+
 ## Exact supported hardware
 
 Public Beta v5.0 supports only these exact hardware IDs:
