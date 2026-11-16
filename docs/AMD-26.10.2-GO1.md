@@ -1,6 +1,6 @@
-# AMD Adrenalin 26.10.2 — Legion Go 1 release candidate
+# Public Beta v6.0 — AMD Adrenalin 26.10.2
 
-**Status: hardware-validated candidate; release assets pending publication.** The existing AMD 26.9.2 Public Beta v5.0 remains available and unchanged. This candidate is derived from v5.0 and targets only the original Legion Go 1 Z1 Extreme. It does not extend 26.10.2 support to Go S or Go 2.
+**Scope: original Lenovo Legion Go 1 Z1 Extreme only.** See [GitHub Releases](../../releases) for the published assets.
 
 ## Compatibility and prerequisites
 
@@ -10,9 +10,9 @@
 - Secure Boot must already be disabled. The workflow temporarily changes Test Signing and certificate trust, modifies the Driver Store, installs AMD Software, and restarts Windows.
 - No mandatory Lenovo recovery-driver download. Recovery and alternate starting stacks have not been independently validated for this candidate.
 
-## Candidate asset identities
+## Release asset identities
 
-These are the exact locally prepared RC1 files, **not yet downloadable GitHub release assets**. Keep their filenames unchanged.
+The release uses the validated RC1 package and bootstrap filenames. Keep their filenames unchanged and verify their hashes before installation.
 
 | File | SHA-256 |
 |---|---|
@@ -28,7 +28,7 @@ FileVersion: 26.10.2.0
 SHA-256: 2D743DE62B6732A04BCD940AF76CD2D0C1EF85E2F01A91EA235AC96BCEB42B77
 ```
 
-## Installation (once assets are available)
+## Installation
 
 Place the two RC1 files directly in Downloads with exactly one matching AMD EXE under Downloads. Do not manually extract the inner toolkit ZIP. Verify the bootstrap hash against the value above before executing it. From Windows PowerShell 5.1 on the supported device:
 
@@ -55,11 +55,5 @@ On November 16, 2026, one physical original Legion Go completed Beta r3 end to e
 | Secure Boot | Disabled |
 
 The candidate toolkit passed 21/21 manifest checks. RC1 retains the tested driver stages and adds console QuickEdit protection. A fresh RC1 installation, its automatic reboot-resume behavior, rollback, gaming, sleep and performance are not yet independently validated. A retained local public certificate and disabled Secure Boot mean the final state is not equivalent to default Windows security. Raw device evidence is not included.
-
-## Publication checklist
-
-- Attach the exact toolkit ZIP and bootstrap to a separate 26.10.2 Go 1 release, verify the uploaded hashes, and retain the existing 26.9.2 release.
-- Ensure the distribution includes the repository's MIT copyright/license and third-party notices; do not redistribute AMD binaries or third-party software without applicable rights.
-- Keep the candidate label and one-device scope until broader testing is established.
 
 Independent community project; not endorsed by AMD, Lenovo or Microsoft. See [MIT License](../LICENSE) and [Third-Party Notices](../THIRD-PARTY-NOTICES.md).
