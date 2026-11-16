@@ -1,25 +1,25 @@
 <div align="center">
 
-# Lenovo Legion Go 1 — AMD Adrenalin 26.10.2 Toolkit
+# Lenovo Legion Go 1 — AMD Adrenalin 26.11.1 Toolkit
 
-### Public Beta v6.0 — Original Legion Go Z1 Extreme
+### Public Beta v6.1 — Original Legion Go Z1 Extreme
 
-![Release](https://img.shields.io/badge/release-Public%20Beta%20v6.0-2EA44F?style=for-the-badge)
-![AMD](https://img.shields.io/badge/AMD-26.10.2-ED1C24?style=for-the-badge)
+![Release](https://img.shields.io/badge/release-Public%20Beta%20v6.1-2EA44F?style=for-the-badge)
+![AMD](https://img.shields.io/badge/AMD-26.11.1-ED1C24?style=for-the-badge)
 ![Audit](https://img.shields.io/badge/final%20audit-78%2F78-2EA44F?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/platform-Windows%2011-0078D4?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
 
-**Automatically build, install and verify AMD Adrenalin 26.10.2 for the original Legion Go Z1 Extreme.**
+**Automatically build, install and verify AMD Adrenalin 26.11.1 for the original Legion Go Z1 Extreme.**
 
-[Releases](../../releases) · [Installation and checksums](docs/AMD-26.10.2-GO1.md) · [Report an issue](../../issues)
+[Public Beta v6.1](../../releases/tag/public-beta-v6.1) · [Installation and checksums](docs/AMD-26.11.1-GO1.md) · [Report an issue](../../issues)
 
 </div>
 
 ---
 
 > [!IMPORTANT]
-> Public Beta v6.0 targets **only the original Lenovo Legion Go 1 Z1 Extreme**. The driver installation was physically validated on one device using Beta r3, followed by a successful RC1 persistence audit of 78/78 checks. The release retains the RC1 executable payload.
+> Public Beta v6.1 targets **only the original Lenovo Legion Go 1 Z1 Extreme**. The exact released RC1 package successfully completed a direct upgrade from the previous public beta on physical hardware, followed by a 78/78 persistence audit with zero failures or warnings. RC1 filenames are intentionally retained.
 
 > [!WARNING]
 > This toolkit modifies the display driver, Driver Store, certificate trust, AMD Software, scheduled tasks and temporary Windows Test Signing configuration. Save your work, keep an independent Windows recovery option available and preserve your BitLocker or Device Encryption recovery key before changing Secure Boot. Secure Boot remains disabled and a local public signing certificate remains trusted after installation.
@@ -33,8 +33,8 @@
 | Exact display hardware ID | `PCI\VEN_1002&DEV_15BF&SUBSYS_381217AA&REV_04` |
 | GPU | AMD Radeon(TM) 780M |
 | OS | Windows 11 x64 |
-| AMD Adrenalin | 26.10.2 |
-| Display driver | `32.0.32015.12012` |
+| AMD Adrenalin | 26.11.1 |
+| Display driver | `32.0.32015.16001` |
 | Active DDInstall | `ati2mtag_Phoenix_LegionGo` |
 
 All other hardware IDs are outside the supported scope.
@@ -49,35 +49,37 @@ All other hardware IDs are outside the supported scope.
 - AMD Software and DVR installation.
 - Return to normal boot-signing policy and final 78-check persistence audit.
 - No mandatory Lenovo recovery driver download.
+- Explicit `-Install` mode for the supported device; `-GateOnly` enables read-only preflight without starting installation.
 
 ## Download and install
 
-Download the following two files from [GitHub Releases](../../releases):
+Download the following two files from [Public Beta v6.1 release](../../releases/tag/public-beta-v6.1):
 
-- `LegionGo-AMD-26.10.2-V5-Derived-RC1.zip`
-- `Start-LegionGo-AMD-26.10.2-RC1.ps1`
+- `LegionGo-AMD-26.11.1-Public-Beta-v6.1-RC1.zip`
+- `Start-LegionGo-AMD-26.11.1-RC1.ps1`
 
 Also obtain the official AMD installer independently:
 
-`whql-amd-software-adrenalin-edition-26.10.2-win11-c.exe`
+`amd-software-adrenalin-edition-26.11.1-win11-c.exe`
 
-Place all three files in Downloads. Do not rename or manually extract the toolkit ZIP. Verify their hashes using the [installation guide](docs/AMD-26.10.2-GO1.md). Use Windows PowerShell 5.1 on the supported device:
+Place all three files in Downloads. Do not rename or manually extract the toolkit ZIP. Verify their hashes using the [installation guide](docs/AMD-26.11.1-GO1.md). Use Windows PowerShell 5.1 on the supported device:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\Start-LegionGo-AMD-26.10.2-RC1.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\Start-LegionGo-AMD-26.11.1-RC1.ps1" -Install
 ```
 
-Administrator access and disabled Secure Boot are required. AC power is recommended. Accept the initial confirmation prompts and let the managed workflow handle the stages and restarts.
+Administrator access and disabled Secure Boot are required. AC power is recommended. Do not run installation mode on any unsupported system. Accept the initial confirmation prompts and let the managed workflow handle the stages and restarts.
 
 ## Validation results
 
 | Check | Result |
 |---|---|
-| Physical installation | Passed (Beta r3) |
+| Physical direct upgrade | Passed (exact RC1 package) |
+| Windows PowerShell preflight | **38/38 PASS** |
 | RC1 final persistence audit | **78/78 PASS** |
 | Failed checks / warnings | 0 / 0 |
 | GPU problem code | 0 |
-| Display driver | `32.0.32015.12012` |
+| Display driver | `32.0.32015.16001` |
 | TESTSIGNING / nointegritychecks | OFF / OFF |
 | Local and official catalog coverage | 14/14 each |
 | AMD Software installation | Passed |
@@ -85,7 +87,7 @@ Administrator access and disabled Secure Boot are required. AC power is recommen
 | Package manifest integrity | 21/21 |
 | Secure Boot | Disabled |
 
-A fresh RC1 installation, rollback, gaming performance, sleep behavior and additional configurations remain unverified. This is a public beta, not an official AMD or Lenovo driver release.
+Clean installation, rollback, gaming performance, sleep behavior and additional configurations remain unverified. This is a public beta, not an official AMD or Lenovo driver release.
 
 ## Troubleshooting
 
